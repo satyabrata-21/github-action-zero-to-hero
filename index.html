@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Satyabrata Behera | DevOps Architect</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --primary:#00f5ff;
+  --secondary:#8e2de2;
+  --bg:#0f0c29;
+  --text:#fff;
+  --glass:rgba(255,255,255,0.08);
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+  scroll-behavior:smooth;
+}
+
+body{
+  background:linear-gradient(-45deg,#0f0c29,#302b63,#24243e,#1a1a2e);
+  background-size:400% 400%;
+  animation:gradient 20s ease infinite;
+  color:var(--text);
+  overflow-x:hidden;
+}
+
+@keyframes gradient{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
+
+/* Scroll Bar */
+#progress{
+  position:fixed;
+  top:0;
+  left:0;
+  height:4px;
+  background:linear-gradient(90deg,var(--primary),var(--secondary));
+  width:0%;
+  z-index:2000;
+}
+
+/* Floating Blob */
+.blob{
+  position:fixed;
+  width:600px;
+  height:600px;
+  background:linear-gradient(45deg,var(--primary),var(--secondary));
+  filter:blur(150px);
+  border-radius:50%;
+  animation:blobMove 25s infinite alternate;
+  z-index:-1;
+}
+
+@keyframes blobMove{
+  0%{transform:translate(-300px,-200px);}
+  100%{transform:translate(300px,200px);}
+}
+
+/* Glass */
+.glass{
+  background:var(--glass);
+  backdrop-filter:blur(20px);
+  border-radius:20px;
+  border:1px solid rgba(255,255,255,0.15);
+  box-shadow:0 8px 32px rgba(0,0,0,0.5);
+}
+
+/* Navbar */
+nav{
+  position:fixed;
+  width:100%;
+  padding:20px 8%;
+  display:flex;
+  justify-content:space-between;
+  z-index:1000;
+}
+
+nav a{
+  color:#fff;
+  text-decoration:none;
+  margin-left:20px;
+}
+
+/* Hero */
+.hero{
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+}
+
+.hero h1{
+  font-size:3rem;
+  background:linear-gradient(90deg,var(--primary),var(--secondary));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+/* 3D Cube */
+.cube-container{
+  perspective:1000px;
+  width:200px;
+  height:200px;
+  margin:50px auto;
+}
+
+.cube{
+  width:200px;
+  height:200px;
+  position:relative;
+  transform-style:preserve-3d;
+  animation:rotateCube 12s infinite linear;
+}
+
+.cube div{
+  position:absolute;
+  width:200px;
+  height:200px;
+  background:var(--glass);
+  border:1px solid rgba(255,255,255,0.2);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-weight:bold;
+}
+
+.cube .front{transform:translateZ(100px);}
+.cube .back{transform:rotateY(180deg) translateZ(100px);}
+.cube .left{transform:rotateY(-90deg) translateZ(100px);}
+.cube .right{transform:rotateY(90deg) translateZ(100px);}
+.cube .top{transform:rotateX(90deg) translateZ(100px);}
+.cube .bottom{transform:rotateX(-90deg) translateZ(100px);}
+
+@keyframes rotateCube{
+  from{transform:rotateX(0) rotateY(0);}
+  to{transform:rotateX(360deg) rotateY(360deg);}
+}
+
+/* Terminal */
+.terminal{
+  background:#000;
+  padding:20px;
+  border-radius:10px;
+  font-family:monospace;
+  color:#0f0;
+  height:250px;
+  overflow:hidden;
+}
+
+/* Sections */
+section{
+  padding:100px 8%;
+}
+
+footer{
+  text-align:center;
+  padding:20px;
+}
+</style>
+</head>
+
+<body>
+
+<div id="progress"></div>
+<div class="blob"></div>
+
+<nav>
+  <div><strong>Satyabrata</strong></div>
+  <div>
+    <a href="#projects">Projects</a>
+    <a href="#terminal">Terminal</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div>
+    <h1>Satyabrata Behera</h1>
+    <p>DevOps Architect | Automation Engineer | Cloud Builder</p>
+
+    <div class="cube-container">
+      <div class="cube">
+        <div class="front">Docker</div>
+        <div class="back">AWS</div>
+        <div class="left">CI/CD</div>
+        <div class="right">Linux</div>
+        <div class="top">K8s</div>
+        <div class="bottom">Shell</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="terminal">
+  <h2>Live DevOps Terminal</h2>
+  <div class="terminal" id="terminal-output"></div>
+</section>
+
+<section id="projects">
+  <h2>Elite Projects</h2>
+  <div class="glass" style="padding:40px;">
+    Multi-Tier Docker App | CI/CD Pipeline | Infrastructure Automation
+  </div>
+</section>
+
+<section id="contact">
+  <h2>Contact</h2>
+  <div class="glass" style="padding:40px;">
+    Email: satyabrata@example.com
+  </div>
+</section>
+
+<footer>
+© 2026 Satyabrata Behera | GOD MODE DevOps
+</footer>
+
+<script>
+// Scroll progress
+window.onscroll=function(){
+ let winScroll=document.documentElement.scrollTop;
+ let height=document.documentElement.scrollHeight-document.documentElement.clientHeight;
+ document.getElementById("progress").style.width=(winScroll/height)*100+"%";
+};
+
+// Terminal Simulation
+const lines=[
+"Initializing DevOps Environment...",
+"docker build -t production-app .",
+"docker-compose up -d",
+"Running CI/CD pipeline...",
+"Deploying to AWS EC2...",
+"Infrastructure deployed successfully ✔"
+];
+
+let i=0;
+function terminal(){
+ if(i<lines.length){
+   document.getElementById("terminal-output").innerHTML+=lines[i]+"<br>";
+   i++;
+   setTimeout(terminal,1000);
+ }
+}
+terminal();
+</script>
+
+</body>
+</html>
